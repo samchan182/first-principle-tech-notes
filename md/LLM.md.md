@@ -57,10 +57,7 @@ Ollama is like a coffee machine you buy (download), and you put it into your kit
 
 Ollama Applicaition is like put your coffee machine into active mode (turn on application). Now your local become a server. 
 
-Your python code is like the process / steps of making coffee. To do the specific jobs for you. Ollama is a server running behind, it's the client-server agritecture.
-
-# How to easily run LLMs locally by CLI?
-Use Ollama application, here is the doc link.
+Your python code is like the process / steps of making coffee. To do the specific jobs for you. Ollama is a server running behind, it's the client-server agriculture.
 
 ## Why token is so important in LLM?
 The model cannot see the word as human being. Each sentence need to convert into series of "TOKEN", and convert into numerical representation, to predict the next "word".
@@ -255,7 +252,7 @@ Same adapters but base loaded in 4-bit quantization of base model, to fit bigger
 
 It's not about layers, it's about the bits. While LoRA focus on parameter-efficient adaptation. 
 
-# What's relationship between LoRA & Fine-tuning?
+## What's relationship between LoRA & Fine-tuning?
 Full fine-tuning updates every weight up to billions, needs huge memory and computing power. Both methos, LoRA & QLoRA are aiming to solve those problems.
 
 If the model already fits but full fine‑tune is too costly → LoRA.
@@ -327,48 +324,9 @@ OpenRouter = "I want to call AI models from my app"
 Hugging Face = "I want to download AI models, study them, fine-tune them, or share them"
 
 ## How to set permission to claude code?
-In traditional way, when you type `/permission` the interface will show up. 
+The Claude Code permission is set in `.claude/settings.json`, it contains `allow` and `deny` object  written by JSON. 
 
-You can set up your Claude working environment in your local, to AVOID / never touching `C:/user`, and use windows notepad to set the permission by manual. 
-
-e.g.
-
-`
-{
-  "permissions": {
-    "additionalDirectories": ["C:\\dev"],
-    "deny": [
-      "Read(C:\\Users\\**)",
-      "Edit(C:\\Users\\**)",
-      "Write(C:\\Users\\**)",
-      "Bash(*C:\\Users\\*)",
-      "Bash(*C:/Users/*)",
-      "Bash(cd C:\\Users*)",
-      "Bash(cd C:/Users*)"
-    ],
-    "allow": [
-      "Read(C:\\dev\\**)",
-      "Edit(C:\\dev\\**)",
-      "Write(C:\\dev\\**)",
-      "Bash(npm *)",
-      "Bash(npx *)",
-      "Bash(node *)",
-      "Bash(python *)",
-      "Bash(pip *)",
-      "Bash(git *)",
-      "Bash(yarn *)",
-      "Bash(pnpm *)",
-      "Bash(cd *)",
-      "Bash(ls *)",
-      "Bash(dir *)",
-      "Bash(cat *)",
-      "Bash(type *)",
-      "Bash(echo *)",
-      "Bash(mkdir *)"
-    ]
-  }
-}
-`
+Some permission like never access files, how to open a folder, ...etc. 
 
 ## Will user prompt leaves evidence in LLM?
 NO. After one open source model is being trained, the weights file is fixed. The only possible to leave user privacy is through chat history. How your LLM provider save the input and output. 
@@ -376,7 +334,5 @@ NO. After one open source model is being trained, the weights file is fixed. The
 ## What's multi-agent?
 A framework where multiple autonomous agents interact within shared environment to achieve goal. 
 
-Why? Cause multi-agent system works better than single-agent system. (unity is strength !!!)
+LangGraph is low-level solution framework (LangChain is built on top of LangGraph)
 
-
-??? will it makes the task-solving process pretty slow when waiting for multi-agent to respond. ???

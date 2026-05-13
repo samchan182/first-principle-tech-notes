@@ -59,18 +59,19 @@ The core of Android App dev, only 3 things
 3. Get/saves data (network, database, files)
 
 ## What's MVVM architecture?
-Google itself recommends MVVM(Model-View-ViewModel) as the official android architecture. It's the standard pattern for organizing a single screen. 
+Google itself recommends MVVM(Model-View-ViewModel) as the official android architecture. It's the standard pattern for organizing a single screen. Also can be referred to CLEAR ARCHITECTURE.
 
 Those are 3 roles/layers MVVM
-1. 'ViewModel' means exposes those data streams which are relevant to the View. (fetching dat, ...etc)
-2. 'Model' means the abstraction of data sources
-3. 'View' means to inform the ViewModel about the user's action
+1. `presentation/` — anything the user sees or touches (Activities, Fragments, Dialogs, ViewModels)
+2. `domain/` — pure business logic, no Android imports, no network code (use cases, agent orchestration rules)
+3. `data/` — how data is fetched and stored (HTTP clients, databases, API definitions, parsers)
 
-In the "presentation" folder, you see each feature folder will end with "View" or "ViewModel", those folders are grouped by features. 
 
-Every screen        = built using the MVVM pattern
-MVVM pattern         = View + ViewModel + UiState (+ helpers as needed)
-The pattern itself  = lives nowhere, applied everywhere
+- `data/`-- How to get the data?
+
+- `domain/`-- How to deal with those data?
+
+- `presentation/`-- How we present to user?
 
 ## What is 'di' and 'utils' folder used for?
 You can deprioritize those two folders in default structure
@@ -104,32 +105,25 @@ The files
 ## What's Android DOM
 the android document object model(DOM), it's an API use, to parse XML by loading entire environment into RAM, and create a tree structure. 
 
-## How search list show ALL-STOCK popup?
+## How XML works with Kotlin?
+The bridge between them is R class, `import com.example.assetmanager.R`
 
-SQLite (asset_manager.db)
-         ↓  [DAO reads rows]
-StockEntity / FundEntity / etc.
-         ↓  [Repository converts to domain models]
-Stock / Fund / Bond / Metal / Deposit / CustomAsset
-         ↓  [UseCase aggregates all 6 types]
-AssetHoldings (one combined object)
-         ↓  [ViewModel holds in StateFlow]
-IndexViewModel._holdings
-         ↓  [Fragment observes/reads]
-IndexFragment ← popup shows the list
+When you build your project, android build tool will scan your `res/` folder, and generate `R.java`.
+
+When you use `R.id.XXXXX`, which's just a number, is the handle to reach to xml file, to grab the view object.
 
 
+## What is TextView?
+TextView is a class in `android.widget.TextView`, it's a container of 3 things bundled:
 
-IndexViewModel.kt
-       ↓ calls
-GetAssetsWithRealTimePriceUseCase.kt   ← executeFromCache()
-       ↓ calls
-AssetRepositoryImpl.kt                 ← getStockHoldings()
-       ↓ calls
-LocalAssetDataSource.kt                ← getStocks()
-       ↓ calls
-AssetDao.kt                            ← @Query SELECT * FROM stocks
-       ↓ hits
-SQLite (asset_manager.db)
+1. memory slot for text
+2. formatting rule
+3. the draw()
 
-## 
+the static object is defined by XML file, it defines what TextView should looks like.
+
+All the content shown is from Kotlin, 
+
+![image](../res/image/ScreenShot_2026-05-12_120408_771.png)
+
+## What
