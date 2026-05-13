@@ -43,10 +43,16 @@ The right-side canvas is just a visualization of the XML code.
 
 Those XML need to work with Kotlin in order to present UI automation. XML defines the static skeleton. Kotlin handles dynamic, behavioral, and data logic. 
 
-## Three layer in App Architecture?
-1. UI layer
-2. Domain layer
-3. Data layer
+## What's 3 parts in macro-layer of Android?
+1. `presentation/` — anything the user sees or touches (Activities, Fragments, Dialogs, ViewModels)
+2. `domain/` — pure business logic, no Android imports, no network code (use cases, agent orchestration rules)
+3. `data/` — how data is fetched and stored (HTTP clients, databases, API definitions, parsers)
+
+- `data/`-- How to get the data?
+
+- `domain/`-- How to deal with those data?
+
+- `presentation/`-- How we present to user?
 
 In most examples, in kotlin + Java section,
 UI Layer           →    presentation/
@@ -58,20 +64,12 @@ The core of Android App dev, only 3 things
 2. Decides what to do with input (Business Rules)
 3. Get/saves data (network, database, files)
 
-## What's MVVM architecture?
-Google itself recommends MVVM(Model-View-ViewModel) as the official android architecture. It's the standard pattern for organizing a single screen. Also can be referred to CLEAR ARCHITECTURE.
+## What's MVVM?
+Google itself recommends MVVM(Model-View-ViewModel) as the official android architecture. It's the standard pattern for organizing user view (The '/presentation' layer)
 
-Those are 3 roles/layers MVVM
-1. `presentation/` — anything the user sees or touches (Activities, Fragments, Dialogs, ViewModels)
-2. `domain/` — pure business logic, no Android imports, no network code (use cases, agent orchestration rules)
-3. `data/` — how data is fetched and stored (HTTP clients, databases, API definitions, parsers)
-
-
-- `data/`-- How to get the data?
-
-- `domain/`-- How to deal with those data?
-
-- `presentation/`-- How we present to user?
+- `model`, where is your data?
+- `view`, what shows to user?
+- `viewmodel`, combined both and show to user
 
 ## What is 'di' and 'utils' folder used for?
 You can deprioritize those two folders in default structure
@@ -91,7 +89,7 @@ Core library desugaring is an Android build process that enables developers to u
 
 `.xml` is markup language, just a static blueprint. 
 
-## How 3 files work on one section in android?
+## How 3 files work in '/presentation' ?
 In MVVM architecture, there're 2-3 fils to handle:
 1. rendering visuals
 2. holding the current data state
@@ -126,4 +124,4 @@ All the content shown is from Kotlin,
 
 ![image](../res/image/ScreenShot_2026-05-12_120408_771.png)
 
-## What
+## w

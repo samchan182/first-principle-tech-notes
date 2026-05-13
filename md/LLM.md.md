@@ -329,10 +329,34 @@ The Claude Code permission is set in `.claude/settings.json`, it contains `allow
 Some permission like never access files, how to open a folder, ...etc. 
 
 ## Will user prompt leaves evidence in LLM?
-NO. After one open source model is being trained, the weights file is fixed. The only possible to leave user privacy is through chat history. How your LLM provider save the input and output. 
+NO. After one open source model is being trained, the weights file is fixed. The working principle of LLM is your context(user input) is being inserted for linear calculation, it's a black box, NO ONE knows what's going on inside. INTELLIGENCE just emerged. 
+
+The only possibility is your LLM provider knows your input and output for some reasons (training personal data, ...etc), that's how your privacy leaked. 
 
 ## What's multi-agent?
 A framework where multiple autonomous agents interact within shared environment to achieve goal. 
 
 LangGraph is low-level solution framework (LangChain is built on top of LangGraph)
+
+## Why agent needs sandbox?
+Agent will do stupid things, like deleting your PS5 saving log. 
+
+Putting agent in sandbox is like putting a monster into an container, it can still work for you actual environment, but it only works for things you give it to him. 
+
+Also sandbox can do state isolation. You can let your agent works simultaneously, all in one directory. 
+
+## What is sandbox?
+An isolated environment in your device, for you to test and any dangerous things. 
+
+In Windows, sandbox is just a light-weight program, it creates a clone environment of your current computer hardware. You can understand it as mini-VM(virtual machine)
+
+## Windows default sandbox?
+Sandbox is similar to VM, but in VM setting, you need to set memory, storage, and so on, that's to complicated for user. 
+
+Windows sandbox put all those abstract steps away from user. 
+
+## How to apply LangChain to Kotlin?
+Kotlin is eventually use JVM to compile, the structure is more likely close to java. You can use `LangChain4j`, which is a open-source framework, designed to simplify to implement LLM to java application. 
+
+
 
