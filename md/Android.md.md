@@ -124,4 +124,7 @@ All the content shown is from Kotlin,
 
 ![image](../res/image/ScreenShot_2026-05-12_120408_771.png)
 
-## w
+## Android LLM API call?
+kotlin is compiled by JVM, so if you want to use LangChain to construct the API call interface, it won't work. 
+
+Use the conventional OkHttp call will work. 

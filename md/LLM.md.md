@@ -355,8 +355,24 @@ Sandbox is similar to VM, but in VM setting, you need to set memory, storage, an
 
 Windows sandbox put all those abstract steps away from user. 
 
+## What is LangChain & LangGraph?
+LangChain is open-source framework, for building application powered by LLM. LangGraph is built on top of LangChain. 
+
+They both exist for better solving different problem. Before LangGraph is created, LangChain is like linear-assembly factory, when it down to multi-layer, or more complicate problem, it's inefficient. That's why LangGraph come out. 
+
+- LangChain framework holds static building block, it provides standard interface to connect to LLM. You can think it as material. 
+
+- LangGraph framework is a control framework, it allows data move, execute, ..etc. 
+
 ## How to apply LangChain to Kotlin?
 Kotlin is eventually use JVM to compile, the structure is more likely close to java. You can use `LangChain4j`, which is a open-source framework, designed to simplify to implement LLM to java application. 
+
+## Different api call between OkHttp and LangChain4j?
+OkHttp is open-source client in http request. It's a simple one-off request.
+
+LangChain4j is abstraction layer, an operation system to provide you service back by llm. 
+
+In android dev, the LangChain4j doesn't fit the android JVM compile. 
 
 
 
