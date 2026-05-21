@@ -153,6 +153,20 @@ It has zero involvement once APK is built. Phone runs app doesn't need Gradle.
 3 things must be identical:
 
 - gradle wrapper version
-- JDK version
 - SDK version (software development kit)
+- JDK version (Java related)
+
+Android SDK is like the material (You're building the android app, so you need android component), while Gradle is like a assembly line, it's automation tool. 
+
+Gradle and android material to gather your source code, while you're building android, it combined with Android component, to become Android APP (.apk)
+
+Both tool is written in Java, so it needs JVM to run, and java package to support. That's why we need JDK.
+
+## How secrets.properties protect your KEY?
+When in android dev, put your api key into your `secrets.properties`, and use git ignore tool to avoid being uploaded. 
+
+- gradle plugin will read `secrets.properties`, put your key into `BuildConfig`
+- compiler will tranfer your key into Dalvik bytecode, the `.dex` file as string variable
+
+You can not use reverse-engineering to get the key. 
 

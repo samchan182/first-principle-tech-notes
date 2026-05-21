@@ -336,6 +336,8 @@ The only possibility is your LLM provider knows your input and output for some r
 ## What's multi-agent?
 A framework where multiple autonomous agents interact within shared environment to achieve goal. 
 
+It's a design pattern of communication. The language you choose is unimportant. 
+
 LangGraph is low-level solution framework (LangChain is built on top of LangGraph)
 
 ## Why agent needs sandbox?
@@ -374,5 +376,27 @@ LangChain4j is abstraction layer, an operation system to provide you service bac
 
 In android dev, the LangChain4j doesn't fit the android JVM compile. 
 
+## What's Claude Code plugin?
+A software plugin is simply a set of instructions, which is extended from main program. 
 
+The first principle is it requires a set a reliable and standard data, to insert into core engine. 
+
+## What's the entry point of LLM?
+The first principle of `entry point` of LLM or any AI application is the decreasing cost of expressing intent. 
+
+e.g. I want to write a doc and save to computer. Back to 1980s, I need to go to terminal line, to insert sentence after sentence. Back to 2000s, I only need to open a notepad, and start typing.
+
+The entry point is determined by the advance of how tool is faster to meet user intent with minimum friction. 
+
+I think due to the fact that human is so lazy, then the entry point of AI hardware must all be in audio input and output. Sounds is super-convenient for human to exchange information. 
+
+Maybe next step is device like neuralink, human do not need to speak, to exchange info with computer. 
+
+## How to determine the agent winner?
+There're 3 indicator
+- The OS becomes agent. Only Apple? it's hardware related
+- The agent becomes ambient/everywhere through all the hardwares.
+-  The agent become browser. 
+
+ChatGPT chatbot only released about 2-3 years, see what's happening before 2030.
 
