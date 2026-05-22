@@ -1,13 +1,12 @@
 # Android
 
 ## Goal of android architecture?
-- architecture must be consistent. The identical code which's reliable for extend feature A,B,C,...
-- Divide the jobs into layers. Easy to fix bug. 
-- Make your app easy to test. 
+- Architecture must be consistent. No fail.
+- Divide the jobs into layers. Easy to fix bug and debug.
 - Stay open for architecture choice. Some structure might be better for one situation.
 - Simplicity over complicity.
 
-## Android Studio windows scope selector?
+## Android Studio Scope Selector?
 In android studio, there are multiple scope selector, "Project, Android, Project File, ..etc" 
 
 They all refer to the same folder, but showing a different lens/view to developer for specific jobs. 
@@ -22,40 +21,58 @@ The system will read the `AndroidManifest.xml` first, it's the root of app's pac
 3. the hardware component permissions
 4. result of users's screen tap
 
-It's like your APP identity card. Configure how Android launch your app. 
+It's like your APP identity card (An ID card of your app). Configure how Android launch your app. 
 
 ## Why Android development needs gradle?
-gradle is a build automation tool. It's job is to take your dependencies + source code + configuration, to produce a runnable artifact. 
+Gradle is a build automation tool. It's job is to take your `dependencies + source code + configuration`, to produce a runnable artifact. 
 
 Same principle/steps while running android application. 
 
 ## Which folder is the Global Entry Point?
-`AssetManagerApplication.kt`
+`AssetManagerApplication.kt` as the starting point
+
+Next is `MainActivity.kt`, application will start here. 
+
+## Which file config your application code?
+`app/build.gradle.kts`
+
+## Why there're two build gradle files?
+For building two components in different scale. 
+
+- The build gradle file under root directory is `/build.gradle.kts`, it's a project level file, it builds android outside your application.
+
+- The build gradle in your app is `/app/build.gradle.kts`, it's module-level file, it's actually building your app logic. 
 
 ## Which folder contains all the layout setting?
 `res/layout`
 
-## Which folder decide app's logic?
-`kotlin+java/com.example.assetmanager`
+## How secrets.properties protect your KEY?
+When in android dev, put your api key into your `secrets.properties`, and use git ignore tool to avoid being uploaded. 
+
+- gradle plugin will read `secrets.properties`, put your key into `BuildConfig`
+- compiler will tranfer your key into Dalvik bytecode, the `.dex` file as string variable
+
+You can not use reverse-engineering to get the key. 
 
 ## Why package name com.example?
-It's purely a path on your disk. A decade ago, Java designer need a way to create a unique package to separate from people coordinating. They use the domain name they own, and reverse it. 
+It's purely a path on your disk. 
+
+A decade ago, Java designer need a way to create a unique package to separate from people coordinating. They use the domain name they own, and reverse it. 
 
 The name itself is a placeholder domain, when you push your real app on Google Play Store, you should change it to your domain you actually control. 
 
-## Why XML file become canvas in res directory?
-ALL Android XML is text. Android Studio just gives you smart previews for that XML file. 
+## Why XML file become canvas in Android Studio?
+ALL Android XML is text. 
 
-The right-side canvas is just a visualization of the XML code.
+Android Studio just gives you smart previews for that XML file. 
 
 Those XML need to work with Kotlin in order to present UI automation. XML defines the static skeleton. Kotlin handles dynamic, behavioral, and data logic. 
 
-## What's 3 parts in macro-layer of Android?
+## What's three parts in macro-layer of Android?
 1. `presentation/` — anything the user sees or touches (Activities, Fragments, Dialogs, ViewModels)
 2. `domain/` — pure business logic, no Android imports, no network code (use cases, agent orchestration rules)
 3. `data/` — how data is fetched and stored (HTTP clients, databases, API definitions, parsers)
 
-![image](/md\tech-notes\res\image\ScreenShot_2026-05-15_094710_877.png)
 it's Google recommend app architecture
 
 - `data/`-- How to get the data?
@@ -77,16 +94,25 @@ The core of Android App dev, only 3 things
 ## What's MVVM?
 Google itself recommends MVVM(Model-View-ViewModel) as the official android architecture. It's the standard pattern for organizing user view (The '/presentation' layer)
 
+![image](/md\tech-notes\res\image\00.png)
+
 - `model`, where is your data?
 - `view`, what shows to user?
 - `viewmodel`, combined both and show to user
 
 `ViewModel` is like a middleman, transfer data between `model` and `view`. 
 
-## What is 'di' and 'utils' folder used for?
+The files
+1. The View (IndexFragment.kt), pure display which is connectes to the XML layout, display when data in and out. 
+2. The ViewModel(IndexViewModel.kt), the bridge between you presenting UI, and backend database
+3. The State (AssetUiState.kt),defining the boundaries and rules of screen
+
+## What is di and utils folder?
 You can deprioritize those two folders in default structure
-di/ — Dependency Injection (Hilt)
-utils/ — Generic Helpers
+
+`di/` — Dependency Injection (Hilt)
+
+`utils/` — Generic Helpers
 
 ## Kotlin compare to Java?
 Kotlin runs on the JVM, the same runtimes as Java, the Kotlin source code (kt code) still compiled down to JVM .class file, so they both identical in physical level. 
@@ -101,19 +127,8 @@ Core library desugaring is an Android build process that enables developers to u
 
 `.xml` is markup language, just a static blueprint. 
 
-## How 3 files work in '/presentation' ?
-In MVVM architecture, there're 2-3 fils to handle:
-1. rendering visuals
-2. holding the current data state
-3. handling business logic
-
-The files
-1. The View (IndexFragment.kt), pure display which is connectes to the XML layout, display when data in and out. 
-2. The ViewModel(IndexViewModel.kt), the bridge between you presenting UI, and backend database
-3. The State (AssetUiState.kt),defining the boundaries and rules of screen
-
 ## What's Android DOM
-the android document object model(DOM), it's an API use, to parse XML by loading entire environment into RAM, and create a tree structure. 
+the `android document object model` (DOM), it's an API use, to parse XML by loading entire environment into RAM, and create a tree structure. 
 
 ## How XML works with Kotlin?
 The bridge between them is R class, `import com.example.assetmanager.R`
@@ -123,7 +138,7 @@ When you build your project, android build tool will scan your `res/` folder, an
 When you use `R.id.XXXXX`, which's just a number, is the handle to reach to xml file, to grab the view object.
 
 
-## What is TextView?
+## What is TextView class?
 TextView is a class in `android.widget.TextView`, it's a container of 3 things bundled:
 
 1. memory slot for text
@@ -134,14 +149,7 @@ the static object is defined by XML file, it defines what TextView should looks 
 
 All the content shown is from Kotlin, 
 
-![image](../res/image/ScreenShot_2026-05-12_120408_771.png)
-
-## Android LLM API call?
-kotlin is compiled by JVM, so if you want to use LangChain to construct the API call interface, it won't work. 
-
-Use the conventional OkHttp call will work. 
-
-## Which database mobile app will choose?
+## Which database Android app will choose?
 The most used database is Android App is SQLite. 
 
 ## Will Gradle compile in mobile?
@@ -162,11 +170,13 @@ Gradle and android material to gather your source code, while you're building an
 
 Both tool is written in Java, so it needs JVM to run, and java package to support. That's why we need JDK.
 
-## How secrets.properties protect your KEY?
-When in android dev, put your api key into your `secrets.properties`, and use git ignore tool to avoid being uploaded. 
+## What's signingConfig in app/build.gradle?
+In `app/build.gradle`, which is the configuration of how to build your application. `SigningConfig` is one of the components. 
 
-- gradle plugin will read `secrets.properties`, put your key into `BuildConfig`
-- compiler will tranfer your key into Dalvik bytecode, the `.dex` file as string variable
+Each android APP (.apk or .abb), it needs the cryptographically signed before it can be installed on device OR upload to Google Play. 
 
-You can not use reverse-engineering to get the key. 
+It's saying that this update come from the same developer as first release. 
+
+## Which function setting developer mode?
+AppConfig.isDevelopmentMode()
 
