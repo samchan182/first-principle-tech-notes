@@ -94,7 +94,7 @@ The core of Android App dev, only 3 things
 ## What's MVVM?
 Google itself recommends MVVM(Model-View-ViewModel) as the official android architecture. It's the standard pattern for organizing user view (The '/presentation' layer)
 
-![image](/md\tech-notes\res\image\00.png)
+![image](../images/00.png)
 
 - `model`, where is your data?
 - `view`, what shows to user?
