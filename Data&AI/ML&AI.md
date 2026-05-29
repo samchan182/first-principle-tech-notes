@@ -1,9 +1,17 @@
-# Q&A
+## What's machine learning?
+It's a branch of computer science, in order to solve the problem of hardcoded rule.
 
-<br>
+Instead of using millions line of `if-else`, it uses mathematical objective function + large dataset. 
 
-> [!IMPORTANT]
-> Document learnings in a Q&A format.
+It uses the algorithm based on calculus and linear algebra, to adjust internal parameters.
+
+## What's deep learning?
+
+## What's AI?
+
+## What's LLM?
+
+## What are agents?
 
 ## What's 2nm means in semiconductor industry?
 The latest frontier in microchip manufacturing. 

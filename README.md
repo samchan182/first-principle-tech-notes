@@ -11,7 +11,7 @@ Same idea applies to First Principle Thinking. It reasons everything up from the
 ---
 Human hardware is so insufficient and slow. 
 
-Human being are so weak in computing and memory. For example, if we need to do `199 X 577`, we need at least 30 second to solve, but for computer, it only takes 3ms.
+Human being are so weak in computing and memory. For example, if we need to calculate `199 X 577`, we need at least 30 second to solve, but for computer, it only takes 3ms.
 
 ### Why computer has to be binary?
 ---
